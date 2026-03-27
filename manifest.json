@@ -1,0 +1,9 @@
+{
+  "name": "WorkLog",
+  "short_name": "WorkLog",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1f1f1f",
+  "theme_color": "#111111",
+  "icons": []
+}

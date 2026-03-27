@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#111111" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>WorkLog</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <h1><span class="logo-yellow">Work</span><span class="logo-light">Log</span></h1>
+        <span id="todayLabel" class="today"></span>
+      </header>
+
+      <nav class="tabs">
+        <button class="tab active" data-tab="new">+ New Entry</button>
+        <button class="tab" data-tab="all">All Entries</button>
+        <button class="tab" data-tab="summary">Monthly Summary</button>
+      </nav>
+
+      <section id="new" class="panel active">
+        <div class="card">
+          <h2>Log Work Entry</h2>
+
+          <label class="field">
+            <span>Smart Text Entry</span>
+            <textarea
+              id="smartInput"
+              rows="3"
+              placeholder="e.g. Nike setup shoot 9:30-12:00 overtime on-site reason launch prep"
+            ></textarea>
+          </label>
+          <div class="actions actions-tight">
+            <button id="voiceBtn" class="btn btn-secondary">Speak to Fill Form</button>
+            <button id="parseBtn" class="btn btn-secondary">Auto Fill From Text</button>
+          </div>
+          <div id="voiceStatus" class="muted"></div>
+          <div id="suggestions" class="suggestions"></div>
+
+          <div class="timer">
+            <div>
+              <div class="muted">Live Timer</div>
+              <div id="timerDisplay" class="timer-value">00:00:00</div>
+            </div>
+            <div class="timer-actions">
+              <button id="startTimerBtn" class="btn btn-secondary">Start</button>
+              <button id="stopTimerBtn" class="btn btn-secondary">Stop</button>
+              <button id="applyTimerBtn" class="btn btn-secondary">Use Time</button>
+            </div>
+          </div>
+
+          <label class="field">
+            <span>Type</span>
+            <div class="row">
+              <button class="pill active" data-type="Overtime">Overtime</button>
+              <button class="pill" data-type="Offsite Execution">Offsite Execution</button>
+              <button class="pill" data-type="Offsite Overview">Offsite Overview</button>
+            </div>
+          </label>
+
+          <label class="field">
+            <span>Date</span>
+            <input id="dateInput" type="date" />
+          </label>
+
+          <label class="field">
+            <span>Brand / Client</span>
+            <input id="clientInput" type="text" placeholder="e.g. Nike, Adidas" />
+          </label>
+
+          <label class="field">
+            <span>Work Hours</span>
+            <div class="hours-grid">
+              <input id="startInput" type="time" />
+              <input id="endInput" type="time" />
+              <input id="hoursInput" type="number" step="0.25" min="0" placeholder="hrs" />
+            </div>
+          </label>
+
+          <label class="field">
+            <span>Activity / Work Done</span>
+            <textarea id="activityInput" rows="3" placeholder="What did you do?"></textarea>
+          </label>
+
+          <label class="field">
+            <span>Reason / Purpose</span>
+            <textarea id="reasonInput" rows="3" placeholder="Why were you there?"></textarea>
+          </label>
+
+          <div class="actions">
+            <button id="saveBtn" class="btn btn-primary">Save Entry</button>
+            <button id="clearBtn" class="btn btn-secondary">Clear</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="all" class="panel">
+        <div class="card">
+          <h2>All Entries</h2>
+          <div id="entryList" class="list"></div>
+        </div>
+      </section>
+
+      <section id="summary" class="panel">
+        <div class="card">
+          <h2>Monthly Summary</h2>
+          <label class="field inline">
+            <span>Month</span>
+            <input id="monthInput" type="month" />
+          </label>
+          <div id="summaryCards" class="summary-cards"></div>
+          <div class="actions">
+            <button id="exportCsvBtn" class="btn btn-primary">Export CSV</button>
+            <button id="exportPdfBtn" class="btn btn-secondary">Export PDF</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
